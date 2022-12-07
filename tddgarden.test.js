@@ -16,21 +16,17 @@ const corn = {
     yield: 3,
     cost: 1.5,
     sale_price: 3,
-
     factor: {
-        
         sun: {
             low: -25,
             medium: 0,
             high: 35,
         },
-
         wind: {
             low: 25,
             medium: 0,
             high: -40    
         },
-
         rain: {
             low: -10,
             medium: 0,
@@ -44,21 +40,17 @@ const pumpkin = {
     yield: 4,
     cost: 2,
     sale_price: 4,
-
     factor: {
-        
         sun: {
             low: -40,
             medium: -20,
             high: 0,
         },
-
         wind: {
             low: 0,
             medium: 0,
             high: 0    
         },
-
         rain: {
             low: -20,
             medium: 25,
@@ -72,21 +64,17 @@ const potato = {
     yield: 3,
     cost: 1.75,
     sale_price: 2,
-
     factor: {
-        
         sun: {
             low: 25,
             medium: 0,
             high: -35,
         },
-
         wind: {
             low: 25,
             medium: 0,
             high: -40    
         },
-
         rain: {
             low: -20,
             medium: 25,
@@ -100,7 +88,6 @@ const potato = {
 // getYieldForPlant Tests
 
     describe("getYieldForPlant", () => {
-
         test("Get yield for plant", () => {
             expect(getYieldForPlant(corn)).toBe(3);
             expect(getYieldForPlant(pumpkin)).toBe(4);
@@ -111,23 +98,21 @@ const potato = {
 // getYieldForCrop Tests
 
     describe("getYieldForCrop", () => {
-        
         test("Get yield for crop - no weather factors ", () => {
 
             const cropA = {
                 cropType: corn,
                 numPlants: 10,
             };
-
             const cropB = {
                 cropType: pumpkin,
                 numPlants: 12
             };
-
             const cropC = {
                 cropType: potato,
                 numPlants: 14
             };
+
             expect(getYieldForCrop(cropA)).toBe(30);
             expect(getYieldForCrop(cropB)).toBe(48);
             expect(getYieldForCrop(cropC)).toBe(42);
@@ -139,12 +124,10 @@ const potato = {
                 cropType: corn,
                 numPlants: 10,
             };
-
             const cropB = {
                 cropType: pumpkin,
                 numPlants: 12
             };
-
             const cropC = {
                 cropType: potato,
                 numPlants: 14
@@ -167,7 +150,6 @@ const potato = {
     describe("getTotalYield", () => {
         
         test("Calculate total yield with multiple crops - no weather factors", () => {
-            
             const crops = [
                 { cropType: corn, numPlants: 10 },
                 { cropType: pumpkin, numPlants: 5 },
@@ -177,12 +159,10 @@ const potato = {
         });
 
         test("Calculate total yield with multiple crops - with weather factors", () => {
-            
             const cropsA = [
                 { cropType: corn, numPlants: 10 }, // 30
                 { cropType: pumpkin, numPlants: 5 }, // 20
             ];
-
             const cropsB = [
                 { cropType: pumpkin, numPlants: 10 }, // 40
                 { cropType: potato, numPlants: 5 }, // 15
@@ -201,11 +181,14 @@ const potato = {
         });
     
         test("Calculate total yield with 0 amount", () => {
+            
             const corn = {
                 name: "corn",
                 yield: 3,
             };
+
             const crops = [{ cropType: corn, numPlants: 0 }];
+
             expect(getTotalYield({ crops })).toBe(0);
         });
     });
